@@ -8,11 +8,12 @@
  * lives in cloud-functions/ rather than agents/.
  */
 
+import type { CloudFunctionContext } from '@edgeone/types';
 import { createLogger } from '../_logger';
 
 const logger = createLogger('health');
 
-export async function onRequest(context: any) {
+export async function onRequest(context: CloudFunctionContext) {
   const data = {
     status: 'ok',
     service: 'multimodal-file-assistant-agent',

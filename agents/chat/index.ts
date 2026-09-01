@@ -9,6 +9,7 @@
  *   2. Custom tools MCP server     — suggest_actions, deliver_file
  */
 
+import type { AgentContext } from '@edgeone/types';
 import {
   query,
   createSdkMcpServer,
@@ -124,7 +125,7 @@ const _sessionFileCache = new Map<
   Array<{ name: string; base64: string }>
 >();
 
-export async function onRequest(context: any) {
+export async function onRequest(context: AgentContext) {
   const ctxEnv: Record<string, string | undefined> = context.env ?? process.env;
 
   const body = context.request.body ?? {};

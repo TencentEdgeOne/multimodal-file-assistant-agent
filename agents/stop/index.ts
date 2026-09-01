@@ -12,6 +12,7 @@
  * The target conversation_id is therefore passed ONLY via the request body.
  */
 
+import type { AgentContext } from '@edgeone/types';
 const logger = {
   log(...args: unknown[]) {
     console.log(`[stop][${new Date().toISOString()}]`, ...args);
@@ -21,7 +22,7 @@ const logger = {
   },
 };
 
-export async function onRequest(context: any) {
+export async function onRequest(context: AgentContext) {
   const { request } = context;
   const body = (request?.body ?? {}) as Record<string, unknown>;
   // Accept both snake_case and camelCase for backwards compatibility
